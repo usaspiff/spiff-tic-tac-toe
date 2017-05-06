@@ -14,8 +14,8 @@ $(document).ready(function() {
   $("#turnX").click(function() {
     turn = "O";
     computersTurn = "X";
-    $("#turnX").removeClass("btn-primary");
-    $("#turnO").addClass("btn-primary");
+    $("#turnX").addClass("clicked");
+    $("#turnO").removeClass("clicked");
     reset();
   });
 
@@ -23,8 +23,8 @@ $(document).ready(function() {
   $("#turnO").click(function() {
     turn = "X";
     computersTurn = "O";
-    $("#turnO").removeClass("btn-primary");
-    $("#turnX").addClass("btn-primary");
+    $("#turnO").addClass("clicked");
+    $("#turnX").removeClass("clicked");
     $(".tic").text("#");
     reset();
   });
@@ -37,7 +37,7 @@ $(document).ready(function() {
       var computersMove = (Math.random() * 10).toFixed();
       var move = $("#" + computersMove).text();
       if (move === "#") {
-        $("#" + computersMove).text(computersTurn);
+        $("#" + computersMove).text(computersTurn).toggleClass("played");
         taken = true;
         turns[computersMove] = computersTurn;
       }
@@ -159,7 +159,8 @@ $(document).ready(function() {
   function reset() {
     turns = ["#", "#", "#", "#", "#", "#", "#", "#", "#"];
     count = 0;
-    $(".tic").text("#");
+    $(".tic").text("#").removeClass("played");
+    //$(".sides").removeClass("clicked");
     gameOn = false;
   }
 });

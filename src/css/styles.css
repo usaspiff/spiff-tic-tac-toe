@@ -1,3 +1,48 @@
-body{
+body {
   background-color: black;
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 40px;
+
+}
+
+div.row {
+  color: #fff;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 44px;
+  height: 44px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 44px;
+}
+
+.sides {
+  background: #fff;
+  color: black;
+  border: 1px solid #999;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 44px;
+  height: 44px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 94px;
+}
+
+.clicked {
+  background: #999;
+}
+
+.played {
+  background-color: blue;
 }
