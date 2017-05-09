@@ -1,12 +1,9 @@
 body {
   background-color: black;
+  color: white;
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 40px;
 
-}
-
-div.row {
-  color: #fff;
 }
 
 .square {
@@ -25,7 +22,7 @@ div.row {
 }
 
 .sides {
-  background: #fff;
+  background-color: #999;
   color: black;
   border: 1px solid #999;
   font-size: 24px;
@@ -34,15 +31,16 @@ div.row {
   height: 44px;
   margin-right: -1px;
   margin-top: -1px;
-  padding: 0;
+  padding: 4px;
   text-align: center;
   width: 94px;
 }
 
 .clicked {
-  background: #999;
+  background-color: black;
+  border: 2px solid #006400;
 }
 
 .played {
-  background-color: blue;
+  background: #006400;
 }

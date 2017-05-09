@@ -12,8 +12,8 @@ $(document).ready(function() {
 
   //Change player's turn to X and computer's to O
   $("#turnX").click(function() {
-    turn = "O";
-    computersTurn = "X";
+    turn = "X";
+    computersTurn = "O";
     $("#turnX").addClass("clicked");
     $("#turnO").removeClass("clicked");
     reset();
@@ -21,13 +21,15 @@ $(document).ready(function() {
 
   //Change player's turn to X and computer's to O
   $("#turnO").click(function() {
-    turn = "X";
-    computersTurn = "O";
+    turn = "O";
+    computersTurn = "X";
     $("#turnO").addClass("clicked");
     $("#turnX").removeClass("clicked");
     $(".tic").text("#");
     reset();
+    computerTurn();
   });
+
 
   function computerTurn() {
     //Used to break the while loop
@@ -37,7 +39,7 @@ $(document).ready(function() {
       var computersMove = (Math.random() * 10).toFixed();
       var move = $("#" + computersMove).text();
       if (move === "#") {
-        $("#" + computersMove).text(computersTurn).toggleClass("played");
+        $("#" + computersMove).text(computersTurn).addClass("played");
         taken = true;
         turns[computersMove] = computersTurn;
       }
@@ -49,7 +51,7 @@ $(document).ready(function() {
     if (spotTaken === "#") {
       count++;
       turns[id] = turn;
-      $("#" + id).text(turn);
+      $("#" + id).text(turn).addClass("played");
       winCondition(turns, turn);
       if (gameOn === false) {
         computerTurn();
@@ -67,7 +69,7 @@ $(document).ready(function() {
       gameOn = true;
       reset();
       alert(
-        "Player " + currentTurn + " wins! (Top row across 0, 1, and 2 spots)"
+        "Player " + currentTurn + " wins! (Top row across - squares 1, 2, and 3)"
       );
     } else if (
       turnArray[2] === currentTurn &&
@@ -77,7 +79,7 @@ $(document).ready(function() {
       gameOn = true;
       reset();
       alert(
-        "Player " + currentTurn + " wins! (Top row across 2, 4, and 6 spots)"
+        "Player " + currentTurn + " wins! (Diagonal on squares 3, 5, and 7)"
       );
     } else if (
       turnArray[0] === currentTurn &&
@@ -86,7 +88,9 @@ $(document).ready(function() {
     ) {
       gameOn = true;
       reset();
-      alert("Player " + currentTurn + " wins! (1st row down 0, 3, and 6 spots)");
+      alert(
+        "Player " + currentTurn + " wins! (Left row down - squares 1, 4, and 7)"
+      );
     } else if (
       turnArray[0] === currentTurn &&
       turnArray[4] === currentTurn &&
@@ -95,9 +99,7 @@ $(document).ready(function() {
       gameOn = true;
       reset();
       alert(
-        "Player " +
-          currentTurn +
-          " wins! (1st row diagonally across 0, 4, and 8 spots)"
+        "Player " + currentTurn + " wins! (Diagonal on squares 1, 5, and 9)"
       );
     } else if (
       turnArray[1] === currentTurn &&
@@ -106,15 +108,9 @@ $(document).ready(function() {
     ) {
       gameOn = true;
       reset();
-      alert("Player " + currentTurn + " wins! (2nd row down 1, 4, and 7 spots)");
-    } else if (
-      turnArray[2] === currentTurn &&
-      turnArray[5] === currentTurn &&
-      turnArray[8] === currentTurn
-    ) {
-      gameOn = true;
-      reset();
-      alert("Player " + currentTurn + " wins! (3rd row down 2, 5, and 8 spots)");
+      alert(
+        "Player " + currentTurn + " wins! (Middle row down - squares 2, 5 , and 8)"
+      );
     } else if (
       turnArray[2] === currentTurn &&
       turnArray[5] === currentTurn &&
@@ -123,7 +119,7 @@ $(document).ready(function() {
       gameOn = true;
       reset();
       alert(
-        "Player " + currentTurn + " wins! (3rd row across 2, 4, and 6 spots)"
+        "Player " + currentTurn + " wins! (Right row down - squares 3, 6, and 9)"
       );
     } else if (
       turnArray[3] === currentTurn &&
@@ -133,7 +129,7 @@ $(document).ready(function() {
       gameOn = true;
       reset();
       alert(
-        "Player " + currentTurn + " wins! (Middle row across 3, 4, and 5 spots)"
+        "Player " + currentTurn + " wins! (Middle row across squares 4, 5, and 6)"
       );
     } else if (
       turnArray[6] === currentTurn &&
@@ -143,9 +139,18 @@ $(document).ready(function() {
       gameOn = true;
       reset();
       alert(
-        "Player " + currentTurn + " wins! (Bottom row across 6, 7, and 8 spots)"
+        "Player " + currentTurn + " wins! (Bottom row across - squares 7, 8, and 9)"
       );
-    } else {
+    } else if(
+      !(turnArray.includes('#'))
+    ){
+      gameOn = true;
+      reset();
+      alert(
+        "Match draw"
+      );
+    }﻿
+    else {
       gameOn = false;
     }
   }
@@ -153,7 +158,6 @@ $(document).ready(function() {
   $(".tic").click(function() {
     var slot = $(this).attr("id");
     playerTurn(turn, slot);
-    //reset();
   });
 
   function reset() {
