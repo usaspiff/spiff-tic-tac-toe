@@ -12,6 +12,8 @@ Features to add/fix:
 <li>Center board.</li>
 </ul>
 
+![Screen Capture](https://github.com/usaspiff/spiff-tic-tac-toe/blob/master/spiff_fcc_tictactoe.gif)
+
 Made with some help from <a href="https://www.youtube.com/user/pizzapokerguy87">Coding Tutorials 360</a>.
 
 Check it out on CodePen <a href="https://codepen.io/usaspiff/full/xdreYK/">here</a>.
